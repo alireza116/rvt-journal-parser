@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="main">
+      <div id="left">
+        <div id="ltop"></div>
+        <div id="lbottom"></div>
+      </div>
+      <div id="right">
+        <div id="top"></div>
+        <div id="bottom">
+          <div id="bleft"></div>
+          <div id="bright"></div>
+        </div>
+      </div>
+    </div>
+    <script src="timeline.js"></script>
+    <script src="users.js"></script>
+    <script src="barchart.js"></script>
+    <script>
+      var b;
+      d3.json("commandsWarningsData.json").then(function(data) {
+        // console.log(data);
+        var timechart = new timeChart("#top", data);
+        var commands = new commandsList(data);
+
+        b = new barchart("#bleft");
+        var barData = {};
+        data.forEach(function(d) {
+          if (d["details"] in barData) {
+            barData[d["details"]]++;
+          } else {
+            barData[d["details"]] = 1;
+          }
+        });
+        barData = Object.keys(barData).map(function(d) {
+          return { count: barData[d], detail: d };
+        });
+
+        b.drawChart(barData);
+      });
+    </script>
+  </body>
+</html>

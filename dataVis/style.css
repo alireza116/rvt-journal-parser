@@ -1,0 +1,93 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: lightgrey;
+}
+
+#main {
+  width: 100%;
+  height: 100%;
+}
+
+#left {
+  width: 20%;
+  height: 100%;
+  float: left;
+  background-color: teal;
+}
+#right {
+  width: 80%;
+  height: 100%;
+  float: left;
+}
+
+#top {
+  height: 40%;
+  width: 100%;
+  background-color: white;
+}
+
+#bottom {
+  height: 60%;
+  width: 100%;
+}
+
+#ltop {
+  height: 0%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.699);
+}
+
+#lbottom {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  overflow: auto;
+}
+
+#bleft {
+  width: 70%;
+  height: 100%;
+  float: left;
+}
+#bright {
+  width: 30%;
+  height: 100%;
+  float: left;
+  background: white;
+}
+.area {
+  fill: steelblue;
+  clip-path: url(#clip);
+}
+
+.zoom {
+  cursor: move;
+  fill: none;
+  pointer-events: all;
+}
+
+.commandEntry {
+  min-height: 50px;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 3px;
+  padding-left: 8px;
+  background-color: lightgrey;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: orange !important;
+}
+
+circle {
+  cursor: pointer;
+}
